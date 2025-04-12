@@ -195,7 +195,10 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
     for key in resource_module_params.keys():
         if not action:
             if key in resource_add_keys:
-                post_data[key] = resource_module_params[key]
+                if key == "admin-state":
+                    post_data["state"] = resource_module_params[key]
+                else:
+                    post_data[key] = resource_module_params[key]
             elif resource_name == "service" and key == "ipaddress":
                 post_data["ip"] = resource_module_params[key]
             else:

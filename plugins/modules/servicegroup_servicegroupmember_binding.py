@@ -91,6 +91,13 @@ options:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
+  admin_state:
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable the service group member.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
